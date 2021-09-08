@@ -1,0 +1,13 @@
+.nav {
+    margin-bottom: 15px;
+}
+
+ul li :hover {
+    cursor: pointer;
+}
+
+ul li {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 25px;
+}

@@ -1,30 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from 'src/app/models/Todo';
+import { Todo } from 'src/app/models/todo.interface';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  styleUrls: ['./todos.component.css'],
+  providers: [TodoService]
 })
 export class TodosComponent implements OnInit {
 
   todos: Todo[] = [];
-  inputTodo: string = "";
+  inputTodo: string;
   
-  constructor() { }
+  constructor( private _todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.getData();
+  }
 
-    this.todos = [
-      {
-        content: 'First Todo',
-        completed: false,
-      },
-      {
-        content: 'Second Todo',
-        completed: true,
-      }
-    ]
+  getData(): void {
+    this._todoService.getTodos().subscribe(res => {
+      this.todos = res;
+    })
   }
 
   toggleDone (id: number): void {
