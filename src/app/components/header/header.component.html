@@ -1,10 +1,15 @@
-<nav class="nav">
+<header class="header">
+  <nav class="nav">
     <ul>
       <li>
-        <a routerLink="/home">Todo List</a>
+        <a routerLink="/home">{{ 'HOME.TODOLIST' | translate }}</a>
       </li>
       <li>
-        <a routerLink="/about">About</a>
+        <a routerLink="/about/info">About</a>
       </li>
     </ul>
   </nav>
+  <mat-slide-toggle (click)="changeLang()"></mat-slide-toggle> 
+  <button (click)="translateService.use('ru')">ru</button>
+  <button (click)="translateService.use('en')">en</button>
+</header>

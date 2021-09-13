@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todo.interface';
 import { TodoService } from './todo.service';
 
+
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -11,6 +12,7 @@ import { TodoService } from './todo.service';
 export class TodosComponent implements OnInit {
 
   todos: Todo[] = [];
+  
   inputTodo: string;
   
   constructor( private _todoService: TodoService) { }
