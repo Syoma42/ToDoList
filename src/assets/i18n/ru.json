@@ -1,0 +1,9 @@
+{
+    "HOME" : {
+    "TODOLIST": "Список дел",
+    "ABOUT": "About"
+    },
+    "ABOUT" : {
+        "ABOUTINFO": "Information field"
+    }
+}
