@@ -2,14 +2,23 @@
   <nav class="nav">
     <ul>
       <li>
-        <a routerLink="/home">{{ 'HOME.TODOLIST' | translate }}</a>
+        <a routerLink="/home">Todo List</a>
       </li>
       <li>
         <a routerLink="/about/info">About</a>
       </li>
     </ul>
   </nav>
-  <mat-slide-toggle (click)="changeLang()"></mat-slide-toggle> 
-  <button (click)="translateService.use('ru')">ru</button>
-  <button (click)="translateService.use('en')">en</button>
+  <button (click)="changeLang('ru')">ru</button>
+  <button (click)="changeLang('en')">en</button>
 </header>
+
+<div>
+  <select [(ngModel)]="translationService.language">
+    <option *ngFor="let language of translationService.languages" [ngValue]="language">{{language}}</option>
+  </select>
+  
+  <p>
+    {{ 'todoList' | translate }}
+  </p>
+</div>
