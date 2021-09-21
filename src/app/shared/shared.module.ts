@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LangService } from './lang.service';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [LangService],
   imports: [
     CommonModule
   ]
