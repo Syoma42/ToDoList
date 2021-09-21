@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { TodosComponent } from './components/todos/todos.component';
 import { AboutComponent } from './about/about.component';
 import { SharedModule } from './shared/shared.module';
+import { TranslationService } from './shared/translation.service';
+import { TranslatePipe } from './shared/translate.pipe';
 
 
   
@@ -19,7 +21,8 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     WelcomeComponent,
     HeaderComponent,
-    TodosComponent
+    TodosComponent,
+    TranslatePipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { SharedModule } from './shared/shared.module';
     ]),
     SharedModule
   ],
-  providers: [],
+  providers: [TranslationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

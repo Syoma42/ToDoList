@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslationService } from 'src/app/shared/translation.service';
+
 
 
 
@@ -8,17 +9,11 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
+
+
 export class HeaderComponent {
   
-
-  constructor (public translateService: TranslateService) {
-    console.log('yo')
-  }
-  
-  
-  changeLang(lang: string): void {
-    
-    this.translateService.use(lang);
-  }
+  constructor(private translationService: TranslationService) {}
 
 }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LangService implements OnInit {
 
   constructor( public http: HttpClient ) { }

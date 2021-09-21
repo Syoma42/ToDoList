@@ -1,9 +1,0 @@
-{
-    "HOME" : {
-    "TODOLIST": "Todo-List",
-    "ABOUT": "About"
-    },
-    "ABOUT" : {
-        "ABOUTINFO": "Information field"
-    }
-}
