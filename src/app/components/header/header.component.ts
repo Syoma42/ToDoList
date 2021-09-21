@@ -11,15 +11,14 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent {
   
 
-  constructor (public translateService: TranslateService) {}
-
-  
-  changeLang(): any {
-
-    if (this.translateService.currentLang === 'en') { 
-      return this.translateService.use('ru') 
-    } else return this.translateService.use('en')
+  constructor (public translateService: TranslateService) {
+    console.log('yo')
   }
-
+  
+  
+  changeLang(lang: string): void {
+    
+    this.translateService.use(lang);
+  }
 
 }
