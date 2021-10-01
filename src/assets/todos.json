@@ -1,10 +1,6 @@
 [
     {
-      "content": "First Todo",
+      "content": "Add your first todo",
       "completed": false
-    },
-    {
-      "content": "Second Todo",
-      "completed": true
     }
 ]

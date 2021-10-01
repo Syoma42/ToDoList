@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TranslationService } from 'src/app/shared/translation.service';
 
 
@@ -12,8 +13,18 @@ import { TranslationService } from 'src/app/shared/translation.service';
 
 
 
-export class HeaderComponent {
+export class HeaderComponent implements DoCheck {
   
-  constructor(private translationService: TranslationService) {}
+  languageFormControl = new FormControl(this.translationService.language);
 
+  constructor(private translationService: TranslationService) {
+    this.languageFormControl.valueChanges.subscribe( language => this.translationService.language = language )
+
+  }
+
+  
+  ngDoCheck(): void {
+    localStorage.setItem('selectedLang', this.languageFormControl.value)
+    console.log(this.languageFormControl.value)
+  }
 }

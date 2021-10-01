@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/todo.interface';
 import { TodoService } from './todo.service';
 
@@ -9,7 +9,7 @@ import { TodoService } from './todo.service';
   styleUrls: ['./todos.component.css'],
   providers: [TodoService]
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
 
   todos: Todo[] = [];
   
@@ -19,23 +19,22 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+    window.onbeforeunload = () => this.ngOnDestroy();
   }
 
   getData(): void {
     this._todoService.getTodos().subscribe(res => {
       this.todos = res;
     })
+
   }
 
-  toggleDone (id: number): void {
-    this.todos.map((v, i) => {
-      if (i === id) v.completed = !v.completed
-      return v
-    })
+  toggleDone (todo: Todo): void {
+    todo.completed = !todo.completed
   }
 
   deleteTodo (id: number): void {
-    this.todos = this.todos.filter((v, i) => i !== id)
+    this.todos.splice(id, 1)
   }
 
   addTodo () {
@@ -46,5 +45,10 @@ export class TodosComponent implements OnInit {
 
     this.inputTodo = "";
   }
+
+  ngOnDestroy() {
+    localStorage.setItem('Todos', JSON.stringify(this.todos))
+  }
+  
 
 }

@@ -2,23 +2,21 @@
   <nav class="nav">
     <ul>
       <li>
-        <a routerLink="/home">Todo List</a>
+        <a routerLink="/home">{{ 'todoList' | translate }}</a>
       </li>
       <li>
-        <a routerLink="/about/info">About</a>
+        <a routerLink="/about/info">{{ 'about' | translate }}</a>
       </li>
     </ul>
   </nav>
-  <button (click)="changeLang('ru')">ru</button>
-  <button (click)="changeLang('en')">en</button>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'languages' | translate }}</mat-label>
+    <mat-select [formControl]="languageFormControl">
+      <mat-option *ngFor="let language of translationService.languages" [value]="language">{{language}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
 </header>
 
-<div>
-  <select [(ngModel)]="translationService.language">
-    <option *ngFor="let language of translationService.languages" [ngValue]="language">{{language}}</option>
-  </select>
-  
-  <p>
-    {{ 'todoList' | translate }}
-  </p>
-</div>
+

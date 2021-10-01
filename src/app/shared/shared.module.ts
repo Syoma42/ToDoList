@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LangService } from './lang.service';
 import { TranslatePipe } from './translate.pipe';
+import { TranslationService } from './translation.service';
+
 
 
 
 @NgModule({
-  declarations: [],
-  exports: [],
+  declarations: [
+    TranslatePipe
+  ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [
+    TranslatePipe
+  ],
+  providers: [TranslationService]
 })
 export class SharedModule { }

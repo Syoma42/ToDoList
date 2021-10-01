@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Todo } from 'src/app/models/todo.interface';
 
 @Injectable()
@@ -12,6 +12,8 @@ export class TodoService {
   ) { }
 
   getTodos(): Observable<Todo[]> {
-    return this._http.get<Todo[]>('assets/todos.json');
+    const todos = localStorage.getItem('Todos');
+    return (todos && todos.length) ? of(JSON.parse(todos)) : this._http.get<Todo[]>('assets/todos.json') 
   }
+
 }
